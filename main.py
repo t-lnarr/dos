@@ -1,7 +1,7 @@
 # filename: browser_like_rate.py
 # Python 3.8+ (tercihen 3.10+)
 # İhtiyaç: pip install aiohttp
-
+import os
 import asyncio
 import time
 import aiohttp
