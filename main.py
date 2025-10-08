@@ -6,6 +6,7 @@ import asyncio
 import time
 import aiohttp
 from datetime import datetime
+import os
 
 URL = os.getenv("URL")   # <<< burayı sadece kendi test/localhost veya iznin olan site ile değiştir
 # .env veya Railway config üzerinden alınan değer, string olarak gelir
