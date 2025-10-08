@@ -1,14 +1,22 @@
 # filename: browser_like_rate.py
 # Python 3.8+ (tercihen 3.10+)
 # İhtiyaç: pip install aiohttp
-import os
+
 import asyncio
 import time
 import aiohttp
 from datetime import datetime
 
 URL = os.getenv("URL")   # <<< burayı sadece kendi test/localhost veya iznin olan site ile değiştir
-REQUESTS_PER_SECOND = os.getenv("REQUESTS_PER_SECOND")
+# .env veya Railway config üzerinden alınan değer, string olarak gelir
+REQUESTS_PER_SECOND = os.getenv("REQUESTS_PER_SECOND", "5")  # default 5 isteğe ayarla
+try:
+    REQUESTS_PER_SECOND = int(REQUESTS_PER_SECOND)
+    if REQUESTS_PER_SECOND <= 0:
+        raise ValueError
+except ValueError:
+    raise ValueError("REQUESTS_PER_SECOND geçerli bir pozitif sayı olmalı")
+
 TIMEOUT = 10  # saniye
 
 # Tarayıcı benzeri headers
